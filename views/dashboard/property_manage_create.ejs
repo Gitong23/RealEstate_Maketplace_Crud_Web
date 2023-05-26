@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>EPT Properties - Admin Dashboard</title>
+        <!-- <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" /> -->
+        <link href="/css/styles2.css" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <%-include('sidemenu')  %>
+        
+                <!-- Page content wrapper-->
+                <div id="page-content-wrapper">
+                    <!-- Top navigation-->
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                        <div class="container-fluid">
+                            <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                        </div>
+                    </nav>
+
+                    <!-- Page content-->
+        <div class="container-fluid">
+            <h1 class="mt-4">Property Management: Create</h1>
+            <br>
+            <form method="POST" enctype="multipart/form-data" action="/dashboard/property/create">
+                <label>REAL ESTATE NAME:</label>
+                <input class="form-control" type="text" name="real_estate_name" required>
+
+                <label>LOCATION:</label>
+                <input class="form-control" type="text" name="LOCATION" required>
+
+                <label>LATITUDE:</label>
+                <input class="form-control" type="number" step="0.0000001" name="lat">
+
+                <label>LONGITUDE:</label>
+                <input class="form-control" type="number" step="0.0000001" name="lon">
+
+                <label>TYPE:</label>
+                <select class="form-control" name="property_type">
+                    <option value="condominium">condominium</option>
+                    <option value="house">house</option>
+                    <option value="land">land</option>
+                </select>
+                <br>
+
+                <label>TRANSACTION:</label>
+                <select class="form-control" name="TRANSACTION">
+                    <option value="FOR SELL ONLY">FOR SELL ONLY</option>
+                    <option value="RENT UP TO 6 MONTHS">RENT UP TO 6 MONTHS</option>
+                    <option value="FOR RENT AND FOR SELL">FOR RENT AND FOR SELL</option>
+                </select>
+
+                <label>SALE TERMS:</label>
+                <select class="form-control" name="SALE_TERMS">
+                    <option value="LEASEHOLD">LEASEHOLD</option>
+                    <option value="FREEHOLD">FREEHOLD</option>
+                </select>
+
+                <label>SALE PRICE:</label>
+                <input class="form-control" type="number" step="0.01" name="SALE_PRICE">
+
+                <label>RENT PRICE:</label>
+                <input class="form-control" type="number" step="0.01" name="RENT_PRICE">
+
+                <label>COMMON CHARGES:</label>
+                <input class="form-control" type="number" step="0.01" name="COMMON_CHARGES">
+                <br>
+
+                <label>LAND AREA [SQ.WAH]:</label>
+                <input class="form-control" type="number" step="0.01" name="LAND_AREA">
+
+                <label>UNIT SIZE [SQ.M]:</label>
+                <input class="form-control" type="number" step="0.01" name="UNIT_SIZE">
+
+                <label>DECORATION STYLE:</label>
+                <input class="form-control" type="text" name="DECORATION_STYLE">
+
+                <label>NUMBER OF BEDROOMS:</label>
+                <input class="form-control" type="number" name="BEDROOMS">
+
+                <label>NUMBER OF BATHROOMS:</label>
+                <input class="form-control" type="number" name="BATHROOMS">
+
+                <label>DIRECTION OF ROOM:</label>
+                <select class="form-control" name="DIRECTION_OF_ROOM">
+                    <option value="">ไม่มี</option>
+                    <option value="North">North</option>
+                    <option value="East">East</option>
+                    <option value="West">West</option>
+                    <option value="South">South</option>
+                </select>
+                <br>
+
+                <label>INROOM FACILITIES:</label>
+                <input class="form-control" type="text" name="INROOM_FACILITIES">
+
+                <label>PUBLIC FACILITIES:</label>
+                <input class="form-control" type="text" name="PUBLIC_FACILITIES">
+                <br>
+
+                <label>IMAGE01 URL:</label>
+                <input class="form-control" type="file" name="image_01">
+
+                <label>IMAGE02 URL:</label>
+                <input class="form-control" type="file" name="image_02">
+
+                <label>IMAGE03 URL:</label>
+                <input class="form-control" type="file" name="image_03">
+
+                <label>IMAGE04 URL:</label>
+                <input class="form-control" type="file" name="image_04">
+
+                <label>IMAGE05 URL:</label>
+                <input class="form-control" type="file" name="image_05">
+                <br>
+                <input type="submit" name="submit" value="Create">
+            </form>
+        </div>
+
+                </div>
+        </div>
+        
+        
+
+        <%-include('footer') %>
+
+    <!-- core JS-->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    </body>
+</html>

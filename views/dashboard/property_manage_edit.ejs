@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>EPT Properties - Admin Dashboard</title>
+        <!-- <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" /> -->
+        <link href="/css/styles2.css" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <%-include('sidemenu')  %>
+        
+                <!-- Page content wrapper-->
+                <div id="page-content-wrapper">
+                    <!-- Top navigation-->
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                        <div class="container-fluid">
+                            <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                        </div>
+                    </nav>
+
+                    <!-- Page content-->
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Property Management: Edit</h1>
+                        <br>
+                        <form method="POST" action="/dashboard/property/edit" >
+                            <input type="hidden" name="id" value="<%= item.id %>">
+                            <label>REAL ESTATE NAME:</label>
+                            <input class="form-control" type="text" name="real_estate_name" value="<%=item.real_estate_name%>">
+                            <label>LOCATION:</label>
+                            <input class="form-control" type="text" name="LOCATION" value="<%=item.LOCATION%>">
+                            <label>LATITUDE:</label>
+                            <input class="form-control" type="number" step="0.0000001" name="lat"value="<%= item.lat%>">
+                            <label>LONGITUDE:</label>
+                            <input class="form-control" type="number" step="0.0000001" name="lon"value="<%= item.lon%>">
+                            <label>TYPE:</label>
+                            <select class="form-control" name="property_type">
+                                <option value="<%= item.property_type%>" selected><%=item.property_type%>[ค่าเดิม]</option>
+                                <option value="condominium">condominium</option>
+                                <option value="house">house</option>
+                                <option value="land">land</option>
+                            </select>
+                            <br>
+                            <label>TRANSACTION:</label>
+                            <select class="form-control" name="TRANSACTION">
+                                <option value="<%= item.TRANSACTION%>" selected><%= item.TRANSACTION%>[ค่าเดิม]</option>
+                                <option value="FOR SELL ONLY">FOR SELL ONLY</option>
+                                <option value="RENT UP TO 6 MONTHS">RENT UP TO 6 MONTHS</option>
+                                <option value="FOR RENT AND FOR SELL">FOR RENT AND FOR SELL</option>
+                            </select>
+                            <label>SALE TERMS:</label>
+                            <select class="form-control" name="SALE_TERMS">
+                                <option value="<%= item.SALE_TERMS%>" selected><%= item.SALE_TERMS%>[ค่าเดิม]</option>
+                                <option value="LEASEHOLD">LEASEHOLD</option>
+                                <option value="FREEHOLD">FREEHOLD</option>
+                            </select>
+                            <label>SALE PRICE:</label>
+                            <input class="form-control" type="number" step="0.01" name="SALE_PRICE"value="<%= item.SALE_PRICE%>">
+                            <label>RENT PRICE:</label>
+                            <input class="form-control" type="number" step="0.01" name="RENT_PRICE"value="<%= item.RENT_PRICE%>">
+                            <label>COMMON CHARGES:</label>
+                            <input class="form-control" type="number" step="0.01" name="COMMON_CHARGES"value="<%= item.COMMON_CHARGES%>">
+                            <br>
+                            <label>LAND AREA [SQ.WAH]:</label>
+                            <input class="form-control" type="number" step="0.01" name="LAND_AREA"value="<%= item.LAND_AREA%>">
+                            <label>UNIT SIZE [SQ.M]:</label>
+                            <input class="form-control" type="number" step="0.01" name="UNIT_SIZE"value="<%= item.UNIT_SIZE%>">
+                            <label>DECORATION STYLE:</label>
+                            <input class="form-control" type="text" name="DECORATION_STYLE" value="<%=item.DECORATION_STYLE%>">
+                            <label>NUMBER OF BEDROOMS:</label>
+                            <input class="form-control" type="number" name="BEDROOMS" value="<%=item.BEDROOMS%>">
+                            <label>NUMBER OF BATHROOMS:</label>
+                            <input class="form-control" type="number" name="BATHROOMS" value="<%=item.BATHROOMS%>">
+                            <label>DIRECTION OF ROOM:</label>
+                            <select class="form-control" name="DIRECTION_OF_ROOM">
+                                <option value="<%= item.DIRECTION_OF_ROOM%>" selected><%=item.DIRECTION_OF_ROOM%>[ค่าเดิม]</option>
+                                <option value="">ไม่มี</option>
+                                <option value="North">North</option>
+                                <option value="East">East</option>
+                                <option value="West">West</option>
+                                <option value="South">South</option>
+                            </select>
+                            <br>
+                            <label>INROOM FACILITIES:</label>
+                            <input class="form-control" type="text" name="INROOM_FACILITIES" value="<%=item.INROOM_FACILITIES%>">
+                            <label>PUBLIC FACILITIES:</label>
+                            <input class="form-control" type="text" name="PUBLIC_FACILITIES" value="<%=item.PUBLIC_FACILITIES%>">
+                            <br>
+                            <input type="submit" name="submit" value="Edit">
+                        </form>
+                    </div>
+
+                </div>
+        </div>
+        
+        
+
+        <%-include('footer') %>
+
+    <!-- core JS-->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    </body>
+</html>

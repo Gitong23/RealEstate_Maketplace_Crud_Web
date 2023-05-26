@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>EPT Properties - Admin Dashboard</title>
+        <!-- <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" /> -->
+        <link href="/css/styles2.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <%-include('sidemenu')  %>
+        <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                    </div>
+                </nav>
+
+                    <!-- Page content-->
+        <div class="container-fluid">
+            <h1 class="mt-4">User Management</h1>
+            <br>
+            <% if (role == "admin") { %>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Telephone</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(function(user){ %>
+                    <tr>
+                        <form method="POST" action="/dashboard/user/edit">
+                            <th scope="row"><%= user.id %></th>
+                            <td><%= user.email %></td>
+                            <td><%= user.password %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.telephone %></td>
+                            <td>
+                                <select name="newrole">
+                                <% if (user.role == "admin") { %>
+                                <option value="admin" selected>admin</option>
+                                <option value="user">user</option>
+                                <% } else { %>
+                                <option value="admin">admin</option>
+                                <option value="user" selected>user</option>
+                                <% } %>
+                                </select>
+                            </td>
+                            <input type="hidden" name="id" value="<%= user.id %>">
+                            <td><input type="submit" name="submit" value="Edit"></td>
+                        </form>
+                    </tr>
+                <% }); %>
+                </tbody>
+            </table>
+            <% } else { %>
+            <p>Email: <%= users[0].email%></p>
+            <p>Password: <%= users[0].password%></p>
+            <p>Name: <%= users[0].name%></p>
+            <p>Telephone: <%= users[0].telephone%></p>
+            <p>Role: <%= users[0].role%></p>
+            <% } %>
+        </div>
+
+
+            </div>
+        </div>
+        
+    
+
+    <%-include('footer') %>
+
+    <!-- core JS-->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    </body>
+</html>

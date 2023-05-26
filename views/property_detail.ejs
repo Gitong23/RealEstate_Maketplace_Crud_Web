@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>EPT Property</title>
+</head>
+<body>
+    <!-- Header -->
+    <%-include('header')  %>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5">
+            <div class="row-cols-1 input-group-text">
+                <h1><%= item.real_estate_name %></h1>
+            </div>  
+        </div>
+
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-1 justify-content-center">
+                <div class="col mb-5">
+                    <div class="card2 h-100">
+                        
+                        <div class="slideshow-container">
+                            <div class="mySlides fade-in-image"><img src="/property/<%=item.image_01%>" alt="x"></div>
+                            <div class="mySlides fade-in-image"><img src="/property/<%=item.image_02%>" alt="x"></div>
+                            <div class="mySlides fade-in-image"><img src="/property/<%=item.image_03%>" alt="x"></div>
+                            <div class="mySlides fade-in-image"><img src="/property/<%=item.image_04%>" alt="x"></div>
+                            <div class="mySlides fade-in-image"><img src="/property/<%=item.image_05%>" alt="x"></div>
+                        </div>
+
+                        <br>
+                        <div style="text-align:center">
+                            <span class="dot" onclick="currentSlide(1)"><img src="/property/<%= item.image_01%>" alt="x"></span>
+                            <span class="dot" onclick="currentSlide(2)"><img src="/property/<%= item.image_02%>" alt="x"></span>
+                            <span class="dot" onclick="currentSlide(3)"><img src="/property/<%= item.image_03%>" alt="x"></span>
+                            <span class="dot" onclick="currentSlide(4)"><img src="/property/<%= item.image_04%>" alt="x"></span>
+                            <span class="dot" onclick="currentSlide(5)"><img src="/property/<%= item.image_05%>" alt="x"></span>
+                        </div>
+
+                        <p><b>REAL ESTATE NAME:</b> <%= item.real_estate_name%><br>
+                        <b>LOCATION:</b> <%= item.LOCATION%><br>
+                        <b>LATITUDE:</b> <%= item.lat%><br>
+                        <b>LONGITUDE:</b> <%= item.lon%><br>
+                        <b>TYPE:</b> <%= item.property_type%></p><hr>
+                        <p><b>TRANSACTION:</b> <%= item.TRANSACTION%><br>
+                        <b>SALE TERMS:</b> <%= item.SALE_TERMS%><br>
+                        <b>SALE PRICE:</b> <%= item.SALE_PRICE%> BAHT<br>
+                        <b>RENT PRICE:</b> <%= item.RENT_PRICE%> BAHT<br>
+                        <b>COMMON CHARGES:</b> <%= item.COMMON_CHARGES%> BAHT</p><hr>
+                        <p><b>LAND AREA:</b> <%= item.LAND_AREA%> SQ.WAH<br>
+                        <b>UNIT SIZE:</b> <%= item.UNIT_SIZE%> SQ.M<br>
+                        <b>DECORATION STYLE:</b> <%= item.DECORATION_STYLE%><br>
+                        <b>NUMBER OF BEDROOMS:</b> <%= item.BEDROOMS%><br>
+                        <b>NUMBER OF BATHROOMS:</b> <%= item.BATHROOMS%><br>
+                        <b>DIRECTION OF ROOM:</b> <%= item.DIRECTION_OF_ROOM%></p><hr>
+                        <p><b>INROOM FACILITIES:</b> <%= item.INROOM_FACILITIES%><br>
+                        <b>PUBLIC FACILITIES:</b> <%= item.PUBLIC_FACILITIES%></p><hr>
+                        <p><b>CONTACT:</b> <%= item.telephone%> |  <%= item.email%> </p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <%-include('footer')  %>
+
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+        function currentSlide(n) {
+           showSlides(slideIndex = n);
+        }
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+               slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+        }
+
+        console.log("Slide Start...");
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>EPT Property</title>
+</head>
+<body>
+    <!-- Header -->
+    <%-include('header')  %>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5">
+            <div class="row-cols-1 input-group-text">
+                <form action="/search" method="GET">
+                    <input class="form-control-sm" type="text" name="keyword" size="50" placeholder="please input keyword" id="">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <%-include('card_prop') %>
+
+        
+    </section>
+    <!-- Footer -->
+    <%-include('footer')  %>
+</body>
+</html>

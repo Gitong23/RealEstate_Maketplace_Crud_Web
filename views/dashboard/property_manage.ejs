@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>EPT Properties - Admin Dashboard</title>
+        <!-- <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" /> -->
+        <link href="/css/styles2.css" rel="stylesheet" />
+    </head>
+    <body>
+
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <%-include('sidemenu')  %>
+        
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    <h1 class="mt-4">Property Management</h1>
+                    <br>
+                    <button class="btn btn-success" onclick="location.href='/dashboard/property/create';">Create a newproperty</button>
+                    
+                    <% if (role == "admin") { %>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Sale Price</th>
+                                <th scope="col">Rent Price</th>
+                                <th scope="col">Edit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% items.forEach(function(item){ %>
+                                    <tr>
+                                        <form method="GET" action="/dashboard/property/edit">
+                                            <th scope="row"><%= item.id %></th>
+                                            <td><%= item.real_estate_name %></td>
+                                            <td><%= item.LOCATION %></td>
+                                            <td><%= item.property_type %></td>
+                                            <td><%= item.SALE_PRICE %></td>
+                                            <td><%= item.RENT_PRICE %></td>
+                                            <input type="hidden" name="id" value="<%= item.id %>">
+                                            <td><input type="submit" name="submit" value="Edit"></td>
+                                        </form>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                    <% } else { if(items.length == 0) {%>
+                        <h2>You don't have any Property.</h2>
+                        <% }else{ %>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Sale Price</th>
+                                    <th scope="col">Rent Price</th>
+                                    <th scope="col">Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                            <% items.forEach(function(item){ %>
+                                <tr>
+                                    <form method="GET" action="/dashboard/property/edit">
+                                        <th scope="row"><%= item.id %></th>
+                                        <td><%= item.real_estate_name %></td>
+                                        <td><%= item.LOCATION %></td>
+                                        <td><%= item.property_type %></td>
+                                        <td><%= item.SALE_PRICE %></td>
+                                        <td><%= item.RENT_PRICE %></td>
+                                        <input type="hidden" name="id" value="<%= item.id %>">
+                                        <td><input type="submit" name="submit" value="Edit"></td>
+                                    </form>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                        <% } %>
+                    <% } %>
+                   </div>
+            </div>
+        </div>
+        
+        
+
+        <%-include('footer') %>
+
+    <!-- core JS-->
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    </body>
+</html>
+
+
