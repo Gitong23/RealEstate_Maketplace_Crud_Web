@@ -4,26 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>PP Property</title>
+
+     <!-- icon from font font-awesome -->
+     <script src="https://kit.fontawesome.com/e2552fe58e.js" crossorigin="anonymous"></script>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+
+
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/main.css">
-    <title>EPT Property</title>
 </head>
 <body>
     <!-- Header -->
     <%-include('header')  %>
     <section class="py-5">
-        <div class="container px-4 px-lg-5">
-            <div class="row-cols-1 input-group-text">
+        <!-- carousel -->
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="asset/mountains-g0e30681c2_1920.jpg" class="d-block w-100 carousel_img" alt="moutain">
+                </div>
+                <div class="carousel-item">
+                    <img src="asset/tianjin-gf476d6369_1920.jpg" class="d-block w-100 carousel_img" alt="city">
+                </div>
+                <div class="carousel-item">
+                    <img src="asset/valley-gf114a9e2a_1920.jpg" class="d-block w-100 carousel_img" alt="lanscape">
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search_box">
+            <div class="search_center">
+                <h1>ซื้อ ขาย อสังหา ใน ประเทศไทย</h1>
+                <b>เราช่วยให้คุณหาบ้านและที่ดินที่ถูกใจคุณ</b>
                 <form action="/search" method="GET">
-                    <input class="form-control-sm" type="text" name="keyword" size="50" placeholder="please input keyword" id="">
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                    <input type="text" name="keyword" id="search_text">
+                    <input type="submit" value="Search">
                 </form>
             </div>
+        </div>
         </div>
 
         <%-include('card_prop') %>
 
-        
     </section>
     <!-- Footer -->
     <%-include('footer')  %>

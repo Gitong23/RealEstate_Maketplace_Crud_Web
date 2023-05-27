@@ -1,23 +1,22 @@
 
-<div class="album py-5 bg-body-tertiary ">
+<div class="album py-2 bg-body-tertiary ">
     <div class="container ">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mx-5 justify-content-center">
 
             <% prop.forEach( (data) => { %>
                 <div class="col">
                     <div class="card shadow-sm">
-                        
-                        <!-- <img src="/property/condo1/c1_1.jpg" class="bd-placeholder-img card-img-top" width="100%" height="300" alt="condo EPT"> -->
                         <img src=<%= `/property/${data.image_01}` %> class="bd-placeholder-img card-img-top" width="100%" height="300" alt="condo EPT">
-
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Card title: <%= data.real_estate_name %></h5>
-                            <p class="card-text">Location : <%= data.LOCATION %></p>
-                            <p class="card-text">Property type : <%= data.property_type %></p>
-                            <p class="card-text">Sell: <%= data.SALE_PRICE %></p>
-                            <p class="card-text">Rent: <%= data.RENT_PRICE %></p>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= data.real_estate_name %></h5>
+                            <p class="card-text information">Location : <%= data.LOCATION %></p>
+                            <p class="card-text information">Property type : <%= data.property_type %></p>
+                            <p class="card-text information">Sell Price: <%= data.SALE_PRICE %></p>
+                            <p class="card-text information">Rent Price: <%= data.RENT_PRICE %></p>
+                            <p class="card-text information">Sale Term: <%= data.SELE_TERMS %></p>
+                            <p class="card-text information">Area (SQ.WAH): <%= data.LAND_AREA %></p>
+                            <p class="card-text information">Unit Size (SQ.M): <%= data.UNIT_SIZE %></p>
                             <div class="d-flex justify-content-center align-items-center">
-                                <!-- <button type="button" class="btn btn-primary mt-2">View Detail</button> -->
                                 <a href="/property_Detail/<%= data.id %>" class="btn btn-primary mt-2">View Detail</a>
                             </div>
                         </div>

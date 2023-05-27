@@ -80,7 +80,7 @@ app.get("/search", (req, res)=>{
         database:"property"
     });
     
-    let sql = `SELECT * FROM properties WHERE real_estate_name LIKE '\%${keyword}\%' OR LOCATION LIKE '\%${keyword}\%' ;`
+    let sql = `SELECT * FROM properties WHERE real_estate_name LIKE '\%${keyword}\%' OR LOCATION LIKE '\%${keyword}\%' OR property_type LIKE '\%${keyword}\%' ;`
     conn.connect((err) =>{
         if(err) throw err;
         conn.query(sql, (err, result, fields) =>{
@@ -92,6 +92,8 @@ app.get("/search", (req, res)=>{
     });
 
 });
+
+
 
 app.get("/property_detail/:id", (req, res)=>{
 
@@ -150,7 +152,7 @@ app.post("/login", (req, res)=>{
                 req.session.username = result[0].name;
                 req.session.userrole = result[0].role;
                 req.session.email = result[0].email;
-                req.session.userId = result[0].id;
+                req.session.userId = result[0].id_user;
 
                 res.redirect("/dashboard");
                 conn.end();
@@ -257,11 +259,11 @@ app.get('/dashboard/user', (req, res) => {
         let sqlCheck ="";
         if(role == 'admin')
         {
-            sqlCheck = `SELECT * FROM users ORDER BY id`
+            sqlCheck = `SELECT * FROM users ORDER BY id_user`
         }
         else
         {
-            sqlCheck = `SELECT * FROM users WHERE email =? ORDER BY id`;
+            sqlCheck = `SELECT * FROM users WHERE email =? ORDER BY id_user`;
         }
 
 
@@ -297,7 +299,7 @@ app.post('/dashboard/user/edit', (req, res) => {
     
     conn.connect(function(err) {
         if (err) throw err;
-        let sql = `UPDATE users SET role = ? WHERE id = ?;`
+        let sql = `UPDATE users SET role = ? WHERE id_user = ?;`
         conn.query(sql,[newrole, id], function (err, result) {
             if (err) throw err;
             res.redirect('/dashboard/user');
